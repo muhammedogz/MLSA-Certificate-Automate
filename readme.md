@@ -10,7 +10,7 @@ both docx and pdf.
 
 ```
 git clone https://github.com/muhammedogz/MLSA-Certificate-Automate.git
-cd MLSA-Automate
+cd MLSA-Certificate-Automate
 pip install -r requirements.txt
 python main_certificate.py
 ```
