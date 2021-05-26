@@ -4,7 +4,7 @@ import os
 from certificate import *
 from docx import Document
 import csv
-# from docx2pdf import convert
+from docx2pdf import convert
 
 
 # create output folder if not exist
@@ -14,6 +14,7 @@ try:
 except OSError:
     pass
 
+
 def get_participants(f):
     data = [] # create empty list
     with open(f, mode="r") as file:
@@ -22,33 +23,35 @@ def get_participants(f):
             data.append(row) # append all results
     return data
 
-def create_docx_files(filename, list_participate, event, ambassador):
+def create_docx_files(filename, list_participate, ambassador):
 
     for participate in list_participate:
-        name = participate["Name Surname"]
         # use original file everytime
         doc = Document(filename)
+
+        name = participate["Name Surname"]
+        event = participate["Workshop"]
 
         replace_participant_name(doc, name)
         replace_event_name(doc, event)
         replace_ambassador_name(doc, ambassador)
         doc.save('Output/Doc/{}.docx'.format(name))
-        # convert('Output/Doc/{}.docx'.format(name), 'Output/Pdf/{}.pdf'.format(name))
-        
-        
-        for table in doc.tables:
-            for row in table.rows:
-                for cell in row.cells:
-                    for p in cell.paragraphs:
-                        print(p.text)
+        convert('Output/Doc/{}.docx'.format(name), 'Output/Pdf/{}.pdf'.format(name))
 
     
-
+# get certificate temple path
 certificate_file = "Data Template/Event Certificate Template.docx"
+# get participants path
 participate_file = "Data Template/Event Participate Template.csv"
 
+# get ambassador name
+ambassador_name = "Ayşegül Aydoğan"
+
+# get participants
 list_participate = get_participants(participate_file);
-create_docx_files(certificate_file, list_participate, "WSL and VSCode ha", "Aysem Yas")
+
+# process data
+create_docx_files(certificate_file, list_participate, ambassador_name)
 
 
 
