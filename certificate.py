@@ -27,7 +27,7 @@ def replace_info(doc, name, string):
     docx_replace_regex(doc, reg , replace)
 
 def replace_participant_name(doc, name):
-    string = "Samplefirstname Samplelastname"
+    string = "{Name Surname}"
     replace_info(doc, name, string)
 
 def replace_event_name(doc, event):
