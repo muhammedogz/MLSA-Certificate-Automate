@@ -1,9 +1,7 @@
 #!/usr/bin/env python3
 import re
-import os
-from docx import Document
 
-
+# Based on this link
 # https://stackoverflow.com/a/42829667/11970836
 # This function replace data and keeps style
 def docx_replace_regex(doc_obj, regex , replace):
@@ -23,28 +21,21 @@ def docx_replace_regex(doc_obj, regex , replace):
             for cell in row.cells:
                 docx_replace_regex(cell, regex , replace)
 
+# call docx_replace_regex due to inputs
+def replace_info(doc, name, string):
+    reg = re.compile(r""+string)
+    replace = r""+name
+    docx_replace_regex(doc, reg , replace)
 
 def replace_participant_name(doc, name):
     string = "Samplefirstname Samplelastname"
-    reg = re.compile(r""+string)
-    replace = r""+name
-    docx_replace_regex(doc, reg , replace)
+    replace_info(doc, name, string)
 
 def replace_event_name(doc, event):
     string = "{INSERT EVENT NAME}"
-    reg = re.compile(r""+string)
-    replace = r""+event
-    docx_replace_regex(doc, reg , replace)
+    replace_info(doc, event, string)
 
 def replace_ambassador_name(doc, name):
     string = "{student ambassador name}"
-    reg = re.compile(r""+string)
-    replace = r""+name
-    docx_replace_regex(doc, reg , replace)
-
-# create output folder if not exist
-try:
-    os.mkdir("Output")
-except OSError:
-    pass
+    replace_info(doc, name, string)
 
