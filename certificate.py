@@ -11,7 +11,6 @@ def docx_replace_regex(doc_obj, regex , replace):
             inline = p.runs
             # Loop added to work with runs (strings with same style)
             for i in range(len(inline)):
-                print(inline[i].text)
                 if regex.search(inline[i].text):
                     text = regex.sub(replace, inline[i].text)
                     inline[i].text = text

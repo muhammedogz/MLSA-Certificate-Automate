@@ -11,15 +11,21 @@ try:
 except OSError:
     pass
 
+def create_docx_files(doc, dict_participant, event, ambassador):
+    replace_participant_name(doc, dict_participant)
+    replace_event_name(doc, event)
+    replace_ambassador_name(doc, ambassador)
+    doc.save('Output/{}.docx'.format(dict_participant))
+
 filename = "Certificate Template/Event Certificate Template.docx"
 doc = Document(filename) 
-replace_participant_name(doc, "Muhammed Oğuz Oğuz Oğuz Oğuz Oğuz")
-replace_event_name(doc, "WSL + VSCode Edu HD Download")
-replace_ambassador_name(doc, "Ayşem Aydoğan")
-doc.save('Output/Muhammed Oğuz.docx')
+
+create_docx_files(doc, "Domates Patates", "WSL and VSCode ha", "Aysem Yas")
 
 for table in doc.tables:
     for row in table.rows:
         for cell in row.cells:
             for p in cell.paragraphs:
                 print(p.text)
+
+
