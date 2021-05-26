@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-
+# -*- coding: utf-8 -*-
 import os
 from certificate import *
 from docx import Document
@@ -17,7 +17,7 @@ except OSError:
 
 def get_participants(f):
     data = [] # create empty list
-    with open(f, mode="r") as file:
+    with open(f, mode="r", encoding='utf-8') as file:
         csv_reader = csv.DictReader(file)
         for row in csv_reader:
             data.append(row) # append all results
@@ -36,6 +36,7 @@ def create_docx_files(filename, list_participate, ambassador):
         replace_event_name(doc, event)
         replace_ambassador_name(doc, ambassador)
         doc.save('Output/Doc/{}.docx'.format(name))
+        print("Output/{}.pdf Creating".format(name))
         convert('Output/Doc/{}.docx'.format(name), 'Output/Pdf/{}.pdf'.format(name))
 
     
