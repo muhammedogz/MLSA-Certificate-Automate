@@ -5,8 +5,8 @@ both docx and pdf.
 
 ## Setup
 
-! Working on Windows only.
-! Required Microsoft Doc
+- Working on Windows only.
+- Required Microsoft Doc
 
 
 ```
