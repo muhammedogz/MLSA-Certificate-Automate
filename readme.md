@@ -5,7 +5,8 @@ both docx and pdf.
 
 ## Setup
 
-First, should use windows to use doc2pdf module.
+! Working on Windows only.
+! Required Microsoft Doc
 
 
 ```
