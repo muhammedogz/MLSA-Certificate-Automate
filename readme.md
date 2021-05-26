@@ -8,7 +8,6 @@ both docx and pdf.
 - Working on Windows only.
 - Required Microsoft Doc
 
-
 ```
 git clone https://github.com/muhammedogz/MLSA-Certificate-Automate.git
 pip install -r requirements.txt
@@ -21,3 +20,9 @@ In, `main_certificate.py` folder. Change your participants and your name with pa
 In case, you have to deal with your own participate file due to your needs, you should update `list_participants` data.
 
 Also, functions are very simple. You can implement your own versions as well.
+
+## Further Releases ( Not Sure :) )
+
+- Improving coding style
+- Adding e-mail automation to script?
+- Implementing for Linux users?
