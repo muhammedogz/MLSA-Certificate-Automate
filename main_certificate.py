@@ -36,8 +36,8 @@ def create_docx_files(filename, list_participate, ambassador):
         replace_event_name(doc, event)
         replace_ambassador_name(doc, ambassador)
         doc.save('Output/Doc/{}.docx'.format(name))
-        print("Output/{}.pdf Creating".format(name))
-        convert('Output/Doc/{}.docx'.format(name), 'Output/Pdf/{}.pdf'.format(name))
+        os.system("docx2pdf Output/Doc/")
+        os.system("move Output\Doc\*pdf Output\PDF")
 
     
 # get certificate temple path
@@ -45,8 +45,8 @@ certificate_file = "Data Template/Event Certificate Template.docx"
 # get participants path
 participate_file = "Data Template/Event Participate Template.csv"
 
-# get ambassador name
-ambassador_name = "Ayşegül Aydoğan"
+# Enter your name here [Ambassador Name]
+ambassador_name = "Your Name"
 
 # get participants
 list_participate = get_participants(participate_file);
